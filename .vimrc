@@ -1,7 +1,6 @@
-" Set the shell to bash if using vim
 if &shell =~# 'fish$'
     set shell=bash
-endif
+endif                           " Sets the shell to bash
 
 set encoding=utf-8              " Necessary to show Unicode glyphs
 set showmode                    " always show what mode we're currently editing in
@@ -62,6 +61,9 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Key mappings
+let mapleader=","
+
 " set .md files type to markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -87,12 +89,25 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Plugin management using junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-" Javascript bundle for syntax highlighting and improved indentation
 
+" NerdTree file system explorer
+Plug 'scrooloose/nerdtree'
+autocmd vimenter * NERDTree     " Opens NERDTree when vim starts up
+" Closes vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
+
+" NerdCommenter
+Plug 'scrooloose/nerdcommenter'
+
+" Javascript bundle for syntax highlighting and improved indentation
 Plug 'https://github.com/pangloss/vim-javascript.git'
 
-  " Handles JSX syntax highlighting and indentation
-  Plug 'https://github.com/mxw/vim-jsx'
+" Handles JSX syntax highlighting and indentation
+Plug 'https://github.com/mxw/vim-jsx'
+
+" Fuzzy path finding
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
