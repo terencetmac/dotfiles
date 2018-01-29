@@ -75,8 +75,8 @@ let mapleader=","
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " markdown language support
-let g:markdown_fenced_languages = ['c', 'go', 'typescript', 'sql', 'html', 'python', 'bash=sh', 'javascript', 'css', 'sass']
-let g:markdown_syntax_conceal = 0
+"let g:markdown_fenced_languages = ['c', 'go', 'typescript', 'sql', 'html', 'python', 'bash=sh', 'javascript', 'css', 'sass']
+"let g:markdown_syntax_conceal = 0
 
 """""""""""""""""""""""""""
 "    Plugins List         "
