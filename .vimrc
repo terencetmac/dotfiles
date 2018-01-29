@@ -45,6 +45,7 @@ set smartindent                 " smart auto indenting
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:, " Show tabs, trailing whitespace and spaces
+nnoremap <CR> G
 nmap <silent> ,/ :nohlsearch<CR>  " clears search buffer with ,/
 cmap w!! w !sudo tee % >/dev/null " allows editing for sudo files with w!!
 
@@ -101,10 +102,15 @@ Plug 'scrooloose/nerdtree'
 " autocmd vimenter * NERDTree     " Opens NERDTree when vim starts up
 " Closes vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
+map <C-k><C-b> :NERDTreeToggle<CR>
 
 " NerdCommenter
 Plug 'scrooloose/nerdcommenter'
+nmap <C-l> <Plug>NERDCommenterToggle
+vmap <C-l> <Plug>NERDCommenterToggle
+
+" Surround
+Plug 'tpope/vim-surround'
 
 " Javascript bundle for syntax highlighting and improved indentation
 Plug 'https://github.com/pangloss/vim-javascript.git'
