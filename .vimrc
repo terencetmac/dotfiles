@@ -33,6 +33,8 @@ set laststatus=2                " use 2 lines for status bar
 set hidden
 set history=100
 set undolevels=100
+set visualbell                  " don't beep
+set noerrorbells                " don't beep
 
 set splitright                  " create a new split to the right when calling :new
 
@@ -45,6 +47,10 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:, " Show tabs, trailing whitespace and spaces
 nmap <silent> ,/ :nohlsearch<CR>  " clears search buffer with ,/
 cmap w!! w !sudo tee % >/dev/null " allows editing for sudo files with w!!
+
+nnoremap j gj
+nnoremap k gk
+nmap <C-e> :e#<CR>              " Return to previous file in buffer
 
 " Ignore swp pyc and other python(ish) related files
 set wildignore="*.swp, *.pyc, *.o"
@@ -92,7 +98,7 @@ call plug#begin('~/.vim/plugged')
 
 " NerdTree file system explorer
 Plug 'scrooloose/nerdtree'
-autocmd vimenter * NERDTree     " Opens NERDTree when vim starts up
+" autocmd vimenter * NERDTree     " Opens NERDTree when vim starts up
 " Closes vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
@@ -103,11 +109,26 @@ Plug 'scrooloose/nerdcommenter'
 " Javascript bundle for syntax highlighting and improved indentation
 Plug 'https://github.com/pangloss/vim-javascript.git'
 
+" Syntax highlighting
+Plug 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers=['eslint']
+
 " Handles JSX syntax highlighting and indentation
 Plug 'https://github.com/mxw/vim-jsx'
 
 " Fuzzy path finding
 Plug 'ctrlpvim/ctrlp.vim'
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>. :CtrlPTag<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
