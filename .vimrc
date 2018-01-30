@@ -53,6 +53,9 @@ nnoremap j gj
 nnoremap k gk
 nmap <C-e> :e#<CR>              " Return to previous file in buffer
 
+" Convenience bindings
+nnoremap <leader>j :%!python -m json.tool
+
 " Ignore swp pyc and other python(ish) related files
 set wildignore="*.swp, *.pyc, *.o"
 
@@ -83,8 +86,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "                         "
 """""""""""""""""""""""""""
 
-autocmd BufWritePre *.js :normal gggqG
-autocmd FileType javascript set formatprg=prettier\ --stdin
+"autocmd BufWritePre *.js :normal gggqG
+"autocmd FileType javascript set formatprg=prettier\ --stdin
 autocmd filetype html,xml set listchars-=tab:>. " hide tabs on HTML and XML files
 
 syntax on
@@ -92,7 +95,7 @@ syntax enable
 filetype plugin indent on       " allows filetype detection
 
 " Remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 " Plugin management using junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
@@ -130,12 +133,17 @@ let g:syntastic_javascript_checkers=['eslint']
 " Handles JSX syntax highlighting and indentation
 Plug 'https://github.com/mxw/vim-jsx'
 
+" Prettier
+"Plug 'prettier/vim-prettier', {
+  "\ 'do': 'npm install',
+  "\ 'for': ['javascript', 'css', 'scss', 'json'] }
+
 " Fuzzy path finding
 Plug 'ctrlpvim/ctrlp.vim'
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>. :CtrlPTag<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+"Plug '/usr/local/opt/fzf'
+"Plug 'junegunn/fzf.vim'
 call plug#end()
