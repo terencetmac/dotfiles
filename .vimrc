@@ -97,6 +97,13 @@ filetype plugin indent on       " allows filetype detection
 " Remove whitespace on save
 "autocmd BufWritePre * :%s/\s\+$//e
 
+" Load vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugin management using junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
