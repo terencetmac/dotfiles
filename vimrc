@@ -2,6 +2,8 @@
 " - Install & setup eslint + option to toggle prettier
 " Plugins
 "   - Tabular: for auto aligning code, e.g. MD Tables
+"   - Deoplete: for autocomplete
+"   - Emmet: for easier HTML/CSS/JSX expansion
 
 " Install Plug if not available
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -17,8 +19,6 @@ Plug 'tomtom/tcomment_vim'
 nnoremap <silent> <C-l> :TComment<CR>
 
 " Fuzzy Search
-Plug 'ctrlpvim/ctrlp.vim'
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-t> :Files<CR>
@@ -29,14 +29,36 @@ Plug 'lifepillar/vim-solarized8'
 
 Plug 'erichdongubler/vim-sublime-monokai'
 
+Plug 'mhartington/oceanic-next'
+
 " Status Line
 Plug 'itchyny/lightline.vim'
 
 " Code
-" Syntastic
-Plug 'vim-syntastic/syntastic'
+" Syntax Checking
+Plug 'w0rp/ale'
 
+" Syntax highlighting
+Plug 'pangloss/vim-javascript'      " Javascript
+let g:javascript_plugin_jsdoc = 1   " Syntax highlighting for JSDoc
+let g:javascript_plugin_flow = 1    " Syntax highlighting for Flow
+
+Plug 'mxw/vim-jsx'                  " JSX
+
+" Convenience
+Plug 'terryma/vim-multiple-cursors' " Sublime Text-like multi selection
+Plug 'tpope/vim-surround'           " Surrounds text with parens, brackets, etc
+.
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins Settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-multiple-cursor
+let g:multi_cursor_start_word_key = '<C-d>'
+let g:multi_cursor_next_key = '<C-d>'
+" /vim-multiple-cursor
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM Setup
@@ -60,7 +82,7 @@ set title                 " change terminal title
 set smartcase
 set ignorecase
 set hlsearch              " highlight words during search
-
+nnoremap // :noh<CR><esc> " Clears highlighted words on Esc
 " Editor setup
 set encoding=utf-8			  " Necessary to show Unicode glyphs
 set showmode				      " always show what mode we're currently in
@@ -124,27 +146,22 @@ let g:netrw_browse_split = 3
 set background=dark
 " colorscheme solarized8
 syntax on
-colorscheme sublimemonokai
-set termguicolors
-
+colorscheme OceanicNext
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Lightline
 let g:lightline = {
   \ 'colorscheme': 'solarized',
-  \ 'component_expand': {
-  \    'syntastic': 'SyntasticStatuslineFlag',
-  \  },
-  \  'component_type': {
-  \    'syntastic': 'error',
-  \  }
   \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_javascript_checkers = ['eslint']
+let g:ale_linters = {
+  \ 'javascript': ['eslint']
+  \}
+let g:ale_sign_error = '*'   " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
