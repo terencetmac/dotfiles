@@ -99,11 +99,25 @@ set nobackup
 set noswapfile
 set title                 " change terminal title
 
+" Navigation
+set splitbelow            " Create new horizontal windows below
+set splitright            " Create new horizontal windows to the right
+
+" Moving lines of code in N/I/V modes
+nnoremap <C-S-j> :m .+1<CR>==
+nnoremap <C-S-k> :m .-2<CR>==
+inoremap <C-S-j> <Esc>:m .+1<CR>==gi
+inoremap <C-S-j> <Esc>:m .-2<CR>==gi
+vnoremap <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <C-S-k> :m '<-2<CR>gv=gv
+
 " Search - Ignore case when search pattern is all lowercase
 set smartcase
 set ignorecase
 set hlsearch              " highlight words during search
 nnoremap // :noh<CR><esc> " Clears highlighted words on Esc
+nnoremap n nzz            " Make search results appear in the middle of the screen
+nnoremap N Nzz
 
 " Editor setup
 set encoding=utf-8			  " Necessary to show Unicode glyphs
@@ -112,6 +126,7 @@ set nocompatible			    " be improvied, required, removes VI compatibility mode
 set textwidth=120         " maximum width of the editor
 set colorcolumn=120       " set colored column to avoid going too far right
 
+set scrolloff=4           " minimal number of lines before and after cursor
 set tabstop=2				      " a tab is 2 spaces
 set softtabstop=2			    " a tab is 2 spaces when editing
 set expandtab				      " <tab> becomes a shortcut for insert two spaces
@@ -147,7 +162,7 @@ noremap <C-k><C-b> :Texplore<CR> " Opens Explorer in a new Tab
 " Theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-syntax on
+syntax enable             " enables syntax highlighting (previously syntax on)
 colorscheme OceanicNext
 if (has("termguicolors"))
   set termguicolors
