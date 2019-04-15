@@ -1,10 +1,12 @@
 " TODOS:
-" - Install & setup eslint + option to toggle prettier
 " Plugins
 "   - Tabular: for auto aligning code, e.g. MD Tables
 "   - Deoplete: for autocomplete
 "   - Emmet: for easier HTML/CSS/JSX expansion
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Install Plug if not available
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -23,12 +25,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-t> :Files<CR>
 
-" Theme
+" Themes
 Plug 'lifepillar/vim-solarized8'
-" vim-colorssolarized
-
 Plug 'erichdongubler/vim-sublime-monokai'
-
 Plug 'mhartington/oceanic-next'
 
 " Status Line
@@ -54,11 +53,33 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins Settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightline
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \}
+" /lightline
+
 " vim-multiple-cursor
 let g:multi_cursor_start_word_key = '<C-d>'
 let g:multi_cursor_next_key = '<C-d>'
 " /vim-multiple-cursor
 
+" netrw
+let g:netrw_winsize = -28           " Absolute width of netrw window
+let g:netrw_liststyle = 3           " tree-view
+let g:netrw_sort_sequence = '[\/]$,*' " sort is affecting only: directories on the top, files below
+let g:netrw_browse_split = 3        " open file in a new tab
+" /netrw
+
+" ale
+let g:ale_linters = {
+  \ 'javascript': ['eslint']
+  \}
+let g:ale_linters_explicit = 1
+let g:ale_sign_error = '*'   " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+" /ale
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM Setup
@@ -99,17 +120,15 @@ set autoindent            " always set autoindenting on
 set copyindent            " copy the previous indentation on autoindenting
 set smartindent
 set shiftwidth=2          " number of spaces to use for autoindenting
+set laststatus=2          " shows 2 lines in Statusline
 
 set backspace=indent,eol,start " Make backspace delete sensibly
-" set list
-" set listchars=tab>.trail:.,extends:#,nbsp:, " Show tabs, trailing whitespace and spaces
 
-" StatusLine
-set laststatus=2
+" set list                " shows hidden characters
+" set listchars=tab>.trail:.,extends:#,nbsp:, " Show tabs, trailing whitespace and spaces
 
 " Code Settings
 set matchpairs+=<:>       " Match pairs for HTML
-set foldmethod=indent     " Method used in creating folds
 
 " Visual Settings
 set number                " show line numbers
@@ -121,48 +140,16 @@ set lazyredraw            " redraw only when we need to
 " noremap j gj              " moves cursor by file line instead of display line
 " noremap k gk              " moves cursor by file line instead of display line
 noremap <Space> za        " Toggles current fold open/closed
-" Normal Mode
-map <CR> o<Esc>k          " Bind Enter key to add an extra line
+noremap <CR> o<Esc>k      " Bind Enter key to add an extra line
+noremap <C-k><C-b> :Texplore<CR> " Opens Explorer in a new Tab
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" File Explorer (netrw vs. NerdTree)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" netrw vs. NerdTree
-" Absolute width of netrw window
-let g:netrw_winsize = -28
-
-" tree-view
-let g:netrw_liststyle = 3
-
-" sort is affecting only: directories on the top, files below
-let g:netrw_sort_sequence = '[\/]$,*'
-
-" open file in a new tab
-let g:netrw_browse_split = 3
-noremap <C-k><C-b> :Texplore<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set background=dark
-" colorscheme solarized8
 syntax on
 colorscheme OceanicNext
 if (has("termguicolors"))
   set termguicolors
 endif
 
-" Lightline
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \}
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax Highlighting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {
-  \ 'javascript': ['eslint']
-  \}
-let g:ale_sign_error = '*'   " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file

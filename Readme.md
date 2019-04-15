@@ -64,10 +64,22 @@ Reads like `change surrounding` and `delete surrounding`
 **File Explorer**
 - using `netrw`, `:Texplore` opens the explorer in a new tabpage. Currently mapped to `<C-k><C-b>`
 
+** Splitting Windows**
+- `:split filename`, splits window horizontally and loads filename
+- `:vsplit filename`, splits window vertically and loads filename
+- `:close`, closes current window`
+- `<C-w>j`, moves cursor to another window in that direction
+- `<C-w>| / _`, maximizes current window horizontally / vertically
+- `<C-w>=`, makes all windows equal size
+- Resize window
+  - `<C-w>[n]` + `-` / `+` for height, `<` / `>` for width, by `[n]`
+
 **Bookmarks**
 - in normal mode, `m<x>` where <x> is any lowercase letter from a-z
 - `:marks` views all book marks
 - `\`a` jumps to bookmark `a`
+- use capital letters for Global bookmarks across files
+- use `'` instead of `\`` to jump to the beginning of the bookmarked line`
 
 **Code folding**
 - `:5,20fo` folds code from line 5 to 20
@@ -82,4 +94,5 @@ Reads like `change surrounding` and `delete surrounding`
 ## Advanced Features to consider learning and using
 
 [ ] Record a sequence of steps and replay it on multiple lines (Macros)
+
 [ ] Remotely edit a fole with `openssh-client`'s `scp`
