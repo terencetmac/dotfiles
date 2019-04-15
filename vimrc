@@ -83,6 +83,7 @@ set smartcase
 set ignorecase
 set hlsearch              " highlight words during search
 nnoremap // :noh<CR><esc> " Clears highlighted words on Esc
+
 " Editor setup
 set encoding=utf-8			  " Necessary to show Unicode glyphs
 set showmode				      " always show what mode we're currently in
@@ -108,6 +109,7 @@ set laststatus=2
 
 " Code Settings
 set matchpairs+=<:>       " Match pairs for HTML
+set foldmethod=indent     " Method used in creating folds
 
 " Visual Settings
 set number                " show line numbers
@@ -118,9 +120,8 @@ set lazyredraw            " redraw only when we need to
 " General bindings
 " noremap j gj              " moves cursor by file line instead of display line
 " noremap k gk              " moves cursor by file line instead of display line
-
+noremap <Space> za        " Toggles current fold open/closed
 " Normal Mode
-
 map <CR> o<Esc>k          " Bind Enter key to add an extra line
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,7 +139,7 @@ let g:netrw_sort_sequence = '[\/]$,*'
 
 " open file in a new tab
 let g:netrw_browse_split = 3
-
+noremap <C-k><C-b> :Texplore<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
