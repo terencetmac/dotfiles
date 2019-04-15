@@ -58,13 +58,13 @@ Reads like `change surrounding` and `delete surrounding`
 
 **Indenting blocks of code**
 - `=i{` indents all code within the `{`
-- `>i{` / `<i{` to increase / decrease indentation within a block`
+- `>i{` / `<i{` to increase / decrease indentation within a block
 
 ### Navigation
 **File Explorer**
 - using `netrw`, `:Texplore` opens the explorer in a new tabpage. Currently mapped to `<C-k><C-b>`
 
-** Splitting Windows**
+**Splitting Windows**
 - `:split filename`, splits window horizontally and loads filename
 - `:vsplit filename`, splits window vertically and loads filename
 - `:close`, closes current window`
@@ -77,9 +77,9 @@ Reads like `change surrounding` and `delete surrounding`
 **Bookmarks**
 - in normal mode, `m<x>` where <x> is any lowercase letter from a-z
 - `:marks` views all book marks
-- `\`a` jumps to bookmark `a`
+- `<backtick>a` jumps to bookmark `a`
 - use capital letters for Global bookmarks across files
-- use `'` instead of `\`` to jump to the beginning of the bookmarked line`
+- use `'` instead of `<backtick>` to jump to the beginning of the bookmarked line
 
 **Code folding**
 - `:5,20fo` folds code from line 5 to 20
