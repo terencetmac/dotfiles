@@ -10,6 +10,7 @@
 - `xp` - swap 2 letters (delete & paste)
 - `<C-n>`, `<C-p>` - next/previous word completion in Insert Mode
 - `<C-w>` / `<C-u>` - erase word / erase line in Insert Mode
+- `dap` - delete around paragraph
 
 ### Marking Text
 
@@ -24,6 +25,7 @@
 ### Navigation
 
 - Switching between tabs next: `gt`, prev: `gT`, numbered: `nnngt`
+- `:ls` - list all buffers
 
 ### Registers
 
@@ -120,3 +122,8 @@ Reads like `change surrounding` and `delete surrounding`
 [ ] Record a sequence of steps and replay it on multiple lines (Macros)
 
 [ ] Remotely edit a fole with `openssh-client`'s `scp`
+
+## Resources
+
+- Learn [Vimscript the Hard Way](learnvimscriptthehardway.stevelosh.com)
+- [Vim Galore](https://github.com/mhinz/vim-galore)

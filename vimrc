@@ -98,10 +98,11 @@ set noerrorbells          " don't beep
 set nobackup
 set noswapfile
 set title                 " change terminal title
+set showcmd               " show already typed keys when more are expected
 
 " Navigation
-set splitbelow            " Create new horizontal windows below
-set splitright            " Create new horizontal windows to the right
+set splitbelow            " create new horizontal windows below
+set splitright            " create new horizontal windows to the right
 
 " Moving lines of code in N/I/V modes
 nnoremap <C-S-j> :m .+1<CR>==
@@ -120,7 +121,7 @@ nnoremap n nzz            " Make search results appear in the middle of the scre
 nnoremap N Nzz
 
 " Editor setup
-set encoding=utf-8			  " Necessary to show Unicode glyphs
+set encoding=utf-8			  " necessary to show Unicode glyphs
 set showmode				      " always show what mode we're currently in
 set nocompatible			    " be improvied, required, removes VI compatibility mode
 set textwidth=120         " maximum width of the editor
