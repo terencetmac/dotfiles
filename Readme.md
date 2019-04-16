@@ -2,9 +2,33 @@
 
 ## Cheatsheet
 
+### Editing
+
+- `ea` - append at the end of word
+- `J` - join line below to the current one
+- `cc` / `S` - delete line at cursor and substitute text
+- `xp` - swap 2 letters (delete & paste)
+- `<C-n>`, `<C-p>` - next/previous word completion in Insert Mode
+- `<C-w>` / `<C-u>` - erase word / erase line in Insert Mode
+
+### Marking Text
+
+- `v` / `V` - start visual mode / linewise Visual Mode
+- `o` / `O` - move to ends of marked area in Visual Mode
+- `~` - switch case in visual mode
+
+### Searching
+
+- `*` / `g*` - search for word under cursor / search for partial word under cursor
+
 ### Navigation
 
 - Switching between tabs next: `gt`, prev: `gT`, numbered: `nnngt`
+
+### Registers
+
+- `:reg` - show named registers and what's in them
+- `"5p` - paste what's in register "5
 
 ## Plugins
 
