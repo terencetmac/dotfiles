@@ -11,6 +11,8 @@
 - `<C-n>`, `<C-p>` - next/previous word completion in Insert Mode
 - `<C-w>` / `<C-u>` - erase word / erase line in Insert Mode
 - `dap` - delete around paragraph
+- `ctA` - change up to character 'A', works for d
+- `ca"` - change around quotes
 
 ### Marking Text
 
