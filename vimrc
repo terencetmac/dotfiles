@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tomtom/tcomment_vim'
 nnoremap <silent> <C-l> :TComment<CR>
 
-" Fuzzy Search
+" Fuzzy Search - Uses ripgrep, install with brew on macos
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-t> :Files<CR>
@@ -43,11 +43,14 @@ let g:javascript_plugin_jsdoc = 1   " Syntax highlighting for JSDoc
 let g:javascript_plugin_flow = 1    " Syntax highlighting for Flow
 
 Plug 'mxw/vim-jsx'                  " JSX
+Plug 'prettier/vim-prettier', { 'do': 'npm instqall' }  " Prettier
+
 
 " Convenience
+Plug '907th/vim-auto-save'          " Autosave when leaving insert mode
 Plug 'terryma/vim-multiple-cursors' " Sublime Text-like multi selection
 Plug 'tpope/vim-surround'           " Surrounds text with parens, brackets, etc
-.
+Plug 'jiangmiao/auto-pairs'         " Auto closing parents, brackets and quotes.
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -58,6 +61,10 @@ let g:lightline = {
   \ 'colorscheme': 'solarized',
   \}
 " /lightline
+
+" vim-auto-save
+let g:auto_save = 1                 " enable autosave on Vim startup
+" /vim-autosave
 
 " vim-multiple-cursor
 let g:multi_cursor_start_word_key = '<C-d>'
@@ -78,7 +85,10 @@ let g:ale_linters = {
 let g:ale_linters_explicit = 1
 let g:ale_sign_error = '*'   " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
+
+nmap <silent> <Leader>aj :ALENext<CR>
+nmap <silent> <Leader>ak :ALEPrevious<CR>
 " /ale
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -108,7 +118,7 @@ set splitright            " create new horizontal windows to the right
 nnoremap <C-S-j> :m .+1<CR>==
 nnoremap <C-S-k> :m .-2<CR>==
 inoremap <C-S-j> <Esc>:m .+1<CR>==gi
-inoremap <C-S-j> <Esc>:m .-2<CR>==gi
+inoremap <C-S-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-S-j> :m '>+1<CR>gv=gv
 vnoremap <C-S-k> :m '<-2<CR>gv=gv
 
@@ -131,7 +141,7 @@ set scrolloff=4           " minimal number of lines before and after cursor
 set tabstop=2				      " a tab is 2 spaces
 set softtabstop=2			    " a tab is 2 spaces when editing
 set expandtab				      " <tab> becomes a shortcut for insert two spaces
-set nowrap				        " don't wrap lines
+" set nowrap				        " don't wrap lines
 set autoindent            " always set autoindenting on
 set copyindent            " copy the previous indentation on autoindenting
 set smartindent
@@ -156,8 +166,11 @@ set lazyredraw            " redraw only when we need to
 " noremap j gj              " moves cursor by file line instead of display line
 " noremap k gk              " moves cursor by file line instead of display line
 noremap <Space> za        " Toggles current fold open/closed
-noremap <CR> o<Esc>k      " Bind Enter key to add an extra line
+noremap <CR> O<Esc>k      " Bind Enter key to add an extra line
 noremap <C-k><C-b> :Texplore<CR> " Opens Explorer in a new Tab
+
+" Shortcuts
+noremap <Leader>json :%!python -m json.tool<CR>     " Formats current JSON file
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
