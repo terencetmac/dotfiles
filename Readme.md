@@ -13,6 +13,10 @@
 - `dap` - delete around paragraph
 - `ctA` - change up to character 'A', works for d
 - `ca"` - change around quotes
+- `d2w` - delete 2 words
+- `yip` - yank inside paragraph
+- `D` - delete to end of line
+- `J` - Join current line with next, delete what's in between
 
 ### Marking Text
 
@@ -33,6 +37,20 @@
 
 - `:reg` - show named registers and what's in them
 - `"5p` - paste what's in register "5
+
+### Settings
+- `set spell spelllang=en_us` - spellcheck
+- `]s` / `[s` - go to next / last misspelled word
+- `z=` - get suggestions for misspelled word
+- `zg` - mark misspelled word as correct
+- `zw` - mark good word as misspelled
+- `nnoremap <leader>s: set spell!` - toggle spelling mode
+
+### Advanced
+
+Substitutions
+- `:%s /foo/bar/g` - replace foo with bar on every line
+- `:s /foo/bar/g` - replace foo with bar on current line
 
 ## Plugins
 
