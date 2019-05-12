@@ -23,6 +23,8 @@
 - `v` / `V` - start visual mode / linewise Visual Mode
 - `o` / `O` - move to ends of marked area in Visual Mode
 - `~` - switch case in visual mode
+- `vi[` - select inside of brackets
+- `v2i{` - select everything inside 2nd tier braces
 
 ### Searching
 
