@@ -17,6 +17,7 @@
 - `yip` - yank inside paragraph
 - `D` - delete to end of line
 - `J` - Join current line with next, delete what's in between
+- `vep` - at the current cursor, paste into current word. (Visual mode, End of word, Paste)
 
 ### Marking Text
 
@@ -34,6 +35,7 @@
 
 - Switching between tabs next: `gt`, prev: `gT`, numbered: `nnngt`
 - `:ls` - list all buffers
+- `<C-g>` - show path of current file
 
 ### Registers
 
