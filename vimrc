@@ -42,6 +42,9 @@ Plug 'pangloss/vim-javascript'      " Javascript
 let g:javascript_plugin_jsdoc = 1   " Syntax highlighting for JSDoc
 let g:javascript_plugin_flow = 1    " Syntax highlighting for Flow
 
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 Plug 'mxw/vim-jsx'                  " JSX
 Plug 'prettier/vim-prettier', { 'do': 'npm instqall' }  " Prettier
 

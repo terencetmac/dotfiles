@@ -58,6 +58,10 @@ Substitutions
 
 ## Plugins
 
+VIM Plug https://github.com/junegunn/vim-plug
+
+- install plugins `PlugInstall` or `PlugUpdate`
+
 ### Editor
 - Vim Status Bar: (Lightline)[https://github.com/itchyny/lightline.vim] - light and configurable statusline
 
@@ -87,6 +91,10 @@ Wraps text in parentheses, brackets, quotes, tags etc.
 - `yss)` to wrap entire line in `{}`
 
 Reads like `change surrounding` and `delete surrounding`
+
+## Syntax highlighting
+
+- Typescript - https://github.com/peitalin/vim-jsx-typescript
 
 ## Interesting Features
 
