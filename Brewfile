@@ -1,0 +1,8 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "shopify/shopify"
+brew "gcc"
+brew "gcc@5"
+brew "ruby"
+brew "ruby@3.0"
+brew "shopify/shopify/shopify-cli"

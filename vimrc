@@ -103,8 +103,9 @@ let mapleader = ','
 map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " General Settings
-set hidden
+set hidden                " Allows hiding buffers with modifications not yet been written back to file
 set history=100
+
 set undolevels=100
 set visualbell            " don't beep
 set noerrorbells          " don't beep
@@ -136,7 +137,7 @@ nnoremap N Nzz
 " Editor setup
 set encoding=utf-8			  " necessary to show Unicode glyphs
 set showmode				      " always show what mode we're currently in
-set nocompatible			    " be improvied, required, removes VI compatibility mode
+set nocompatible			    " uses VIM configuration instead of VI
 set textwidth=120         " maximum width of the editor
 set colorcolumn=120       " set colored column to avoid going too far right
 
@@ -150,10 +151,14 @@ set copyindent            " copy the previous indentation on autoindenting
 set smartindent
 set shiftwidth=2          " number of spaces to use for autoindenting
 set laststatus=2          " shows 2 lines in Statusline
+set wildmenu              " show possible completions of command, file names and more in status bar
 
 set backspace=indent,eol,start " Make backspace delete sensibly
 
-" set list                " shows hidden characters
+set nosol                 " Prevent the cursor from changing the current column when jumping to other lines
+
+" set list                  " shows hidden characters
+
 " set listchars=tab>.trail:.,extends:#,nbsp:, " Show tabs, trailing whitespace and spaces
 
 " Code Settings
@@ -179,9 +184,12 @@ noremap <Leader>json :%!python -m json.tool<CR>     " Formats current JSON file
 " Theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
+filetype on               " enables syntax highlighting based on file type
 syntax enable             " enables syntax highlighting (previously syntax on)
 colorscheme OceanicNext
 if (has("termguicolors"))
   set termguicolors
 endif
 
+" Other Settings Options
+" map <leader>s :source ~/.vimrc<CR> " reload VIM config

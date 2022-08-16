@@ -1,23 +1,12 @@
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden "!{node_modules}/*"'
-
-# Git Shortcuts
-alias gs='git status'
-alias ga='git add'
-alias gd='git diff'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gco='git checkout'
-alias gb='git branch'
-alias gpo='git push origin'
-alias gamend='git commit --amend'
-alias gunstage='git reset HEAD'
-alias gsync='git fetch upstream && git checkout master && git merge upstream/master'
-alias gg='git grep'
-
-# Navigation
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --exclude "!{node_modules}/*"'

@@ -2,6 +2,16 @@
 
 ## Cheatsheet
 
+1. Bookmarking text
+  - `m<x>` to mark a spot
+  - `' or backtick<x>` to return to the spot   
+  - `:marks` shows all active bookmarks
+
+### Navigation
+
+- Netrw
+  - Create new file `%`
+
 ### Editing
 
 - `ea` - append at the end of word
@@ -155,7 +165,23 @@ Reads like `change surrounding` and `delete surrounding`
 
 [ ] Remotely edit a fole with `openssh-client`'s `scp`
 
+## Installation and Setup
+
+1. Create symlinks for `vimrc`, `bashrc` (where relevant) and `bash_aliases`
+  - `$ ln -s [Source_File_Name] [Symbolic_Link_Name]`
+
+## Issues
+
+1. `source .vimrc` doesn't run as expected, instead, open vim to get plugin install started
+
 ## Resources
 
 - Learn [Vimscript the Hard Way](learnvimscriptthehardway.stevelosh.com)
 - [Vim Galore](https://github.com/mhinz/vim-galore)
+- [Minimal VIM Configuration](https://www.guckes.net/vim/setup.html)
+- VIM<>GIT
+
+  - https://dev.to/iggredible/working-with-vim-and-git-4nkh
+  - https://jakobgm.com/posts/vim/git-integration/
+  - [GitGutter](https://github.com/airblade/vim-gitgutter) - show git diff markers
+  - [vim-fugitive](https://github.com/tpope/vim-fugitive) - general plugin with lots of GIT features in VIM
