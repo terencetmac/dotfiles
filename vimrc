@@ -47,6 +47,7 @@ Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'mxw/vim-jsx'                  " JSX
 Plug 'prettier/vim-prettier', { 'do': 'npm instqall' }  " Prettier
+Plug 'jparise/vim-graphql'
 
 
 " Convenience
@@ -193,3 +194,12 @@ endif
 
 " Other Settings Options
 " map <leader>s :source ~/.vimrc<CR> " reload VIM config
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Language Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Javascript
+set foldmethod=syntax
+set foldcolumn=1
+let javaScript_fold=1
+set foldlevelstart=99
