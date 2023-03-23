@@ -80,6 +80,11 @@ These plugins mimic certain functionality that I've gotten used to in Sublime Te
 
 #### (vim-multiple-cursors)[https://github.com/terryma/vim-multiple-cursors]
 
+VIM Native Multi-cursor editing (link)[https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db]
+
+- search for the word you want to change, then use `cgn` to change it. Use `.` to apply the change the next word or `n`
+  to skip to the next instance of the word
+
 Sublime Text-like multicursor
 
 - `<C-n>` starts multicursor and adds a virtual cursor + selection on the match
@@ -99,6 +104,7 @@ Wraps text in parentheses, brackets, quotes, tags etc.
 - `ds"` to remove delimiters
 - `ysiw]` to wrap text object `iw` in `[]`
 - `yss)` to wrap entire line in `{}`
+- Surround a visual selection with the following character - `<visual select> + S + <tag>`
 
 Reads like `change surrounding` and `delete surrounding`
 
@@ -128,6 +134,17 @@ Reads like `change surrounding` and `delete surrounding`
 - `=i{` indents all code within the `{`
 - `>i{` / `<i{` to increase / decrease indentation within a block
 
+### Terminal
+- `<C-\><C-n>`- return to vim mode
+
+### Macros ###
+- view macros `:reg` to see all registers or `:reg h` to see macro saved
+
+- record macro `q<register><commands>q`
+
+- replay macros `@h` where h represents the register you've saved the macro at
+- `@@` to repeat macro execution, `5@h` or `5@@` to repeat the macro for the next 5 lines
+
 ### Navigation
 **File Explorer**
 - using `netrw`, `:Texplore` opens the explorer in a new tabpage. Currently mapped to `<C-k><C-b>`
@@ -139,8 +156,9 @@ Reads like `change surrounding` and `delete surrounding`
 - `<C-w>j`, moves cursor to another window in that direction
 - `<C-w>| / _`, maximizes current window horizontally / vertically
 - `<C-w>=`, makes all windows equal size
-- Resize window
-  - `<C-w>[n]` + `-` / `+` for height, `<` / `>` for width, by `[n]`
+- Resize
+  - window `<C-w>[n]` + `-` / `+` for height, `<` / `>` for width, by `[n]`
+  - splits - equal width `<C-w>=` 
 
 **Bookmarks**
 - in normal mode, `m<x>` where <x> is any lowercase letter from a-z

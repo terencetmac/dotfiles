@@ -8,5 +8,6 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # fzf
+#   - excludes files ignored by gitignore by default. -I to disable
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='fd --files --no-ignore-vcs --hidden --exclude "!{node_modules}/*"'
+export FZF_DEFAULT_COMMAND='fd --type=f --hidden --exclude "node_modules"'
